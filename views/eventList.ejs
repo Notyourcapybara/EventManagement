@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>All Events</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .event-actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 15px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Header -->
+  <header class="header-top">
+    <div class="header-content">
+      <h1 class="header-title">Event Management</h1>
+      <a href="/logout" class="top-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+  </header>
+
+  <!-- Page Layout -->
+  <div class="page-layout">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <a href="/events"><i class="fas fa-list-ul"></i> Event List</a>
+      <a href="/events/add"><i class="fas fa-plus-circle"></i> Add Event</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content fade-in">
+      <h2><i class="fas fa-calendar-check"></i> All Events</h2>
+      
+      <% if (events.length === 0) { %>
+        <p>No events yet.</p>
+      <% } else { %>
+        <% events.forEach(event => { %>
+          <div class="event-item fade-in">
+            <p><strong><i class="fas fa-tag"></i> Title:</strong> <%= event.title %></p>
+            <p><strong><i class="fas fa-align-left"></i> Description:</strong> <%= event.description %></p>
+            <p><strong><i class="fas fa-calendar-day"></i> Date:</strong> <%= event.date %></p>
+            <p><strong><i class="fas fa-clock"></i> Time:</strong> <%= event.time %></p>
+            <p><strong><i class="fas fa-map-marker-alt"></i> Location:</strong> <%= event.location %></p>
+            
+            <div class="form-submit-wrapper">
+              <a href="/events/edit/<%= event.id %>" class="form-btn">
+                <i class="fas fa-edit"></i> Edit
+              </a>
+              &nbsp;
+              <form action="/events/delete/<%= event.id %>" method="POST" style="display:inline;">
+                 <button type="submit" class="form-btn">
+                     <i class="fas fa-trash-alt"></i> Delete
+                 </button>
+              </form>
+            </div>
+          </div>
+        <% }) %>
+      <% } %>
+    </div>
+  </div>
+</body>
+</html>

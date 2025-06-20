@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Event</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <!-- Top Header -->
+  <header class="header-top">
+    <div class="header-content">
+      <h1 class="header-title">Event Management</h1>
+      <a href="/logout" class="top-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+  </header>
+
+  <!-- Page Layout -->
+  <div class="page-layout">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <a href="/events"><i class="fas fa-list-ul"></i> Event List</a>
+      <a href="/events/add"><i class="fas fa-plus-circle"></i> Add Event</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content fade-in">
+      <h2><i class="fas fa-calendar-plus"></i> Add Event</h2>
+      <div class="card fade-in">
+        <form action="/events/add" method="POST">
+          <label><i class="fas fa-tag"></i> Title:</label>
+          <input type="text" name="title" required>
+
+          <label><i class="fas fa-align-left"></i> Description:</label>
+          <textarea name="description" required></textarea>
+
+          <label><i class="fas fa-calendar-day"></i> Date:</label>
+          <input type="date" name="date" required>
+
+          <label><i class="fas fa-clock"></i> Time:</label>
+          <input type="time" name="time" required>
+
+          <label><i class="fas fa-map-marker-alt"></i> Location:</label>
+          <input type="text" name="location" required>
+
+          <div class="form-submit-wrapper">
+            <button type="submit" class="form-btn">
+              <i class="fas fa-plus-circle"></i> Add Event
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

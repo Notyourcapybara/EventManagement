@@ -1,0 +1,133 @@
+<% var error = typeof error !== 'undefined' ? error : null; %>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --error-bg: #ffe5e5;
+      --error-text: #d8000c;
+    }
+
+    .login-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    .login-card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .login-card h2 {
+      margin-bottom: 25px;
+      color: var(--accent-color);
+      font-size: 24px;
+    }
+
+    .input-group {
+      display: flex;
+      align-items: center;
+      background: #f2f2f2;
+      border-radius: 6px;
+      margin-bottom: 18px;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .input-group i {
+      margin-right: 10px;
+      color: #888;
+    }
+
+    .input-group input {
+      border: none;
+      background: transparent;
+      width: 100%;
+      outline: none;
+      font-size: 16px;
+    }
+
+    .login-btn {
+      background-color: var(--nav-button-bg);
+      color: white;
+      padding: 10px 22px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .login-btn:hover {
+      background-color: var(--nav-button-hover);
+      transform: scale(1.05);
+    }
+
+    .error-message {
+      background-color: var(--error-bg);
+      color: var(--error-text);
+      padding: 10px 14px;
+      border-radius: 8px;
+      margin-bottom: 18px;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      text-align: left;
+      font-size: 15px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-card">
+      <h2><i class="fas fa-right-to-bracket"></i> Please Login</h2>
+
+      <% var error = typeof error !== 'undefined' ? error : null; %>
+      <% if (error) { %>
+        <div class="error-message">
+          <i class="fas fa-circle-exclamation"></i> <%= error %>
+        </div>
+      <% } %>
+
+      <form action="/login" method="POST">
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" name="username" placeholder="Username" required>
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" name="password" placeholder="Password" required>
+        </div>
+        <button type="submit" class="login-btn">
+          <i class="fas fa-arrow-right-to-bracket"></i> Login
+        </button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
